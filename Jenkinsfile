@@ -24,15 +24,15 @@ pipeline {
         stage('SonarCloud Scan') {
             steps {
                 withCredentials([string(
-                    credentialsId: 'sonar-token',
+                    credentialsId: 'sonarqube-token',
                     variable: 'SONAR_TOKEN'
                 )]) {
                     sh '''
                         mvn sonar:sonar \
                           -Dsonar.host.url=https://sonarcloud.io \
                           -Dsonar.token=$SONAR_TOKEN \
-                          -Dsonar.projectKey=YOUR_PROJECT_KEY \
-                          -Dsonar.organization=YOUR_ORGANIZATION
+                          -Dsonar.projectKey=shubhamg599_Java-CI-CD \
+                          -Dsonar.organization=shubhamg599
                     '''
                 }
             }
