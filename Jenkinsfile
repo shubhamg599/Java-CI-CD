@@ -57,3 +57,4 @@ post {
         echo 'CI/CD Pipeline failed. Check the console output.'
     }
 }
+}
