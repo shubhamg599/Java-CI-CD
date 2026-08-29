@@ -1,9 +1,4 @@
-pipeline {
-agent any
-
-```
 stages {
-
     stage('Checkout') {
         steps {
             checkout scm
@@ -39,15 +34,10 @@ stages {
     stage('Push to ECR') {
         steps {
             withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-ecr-credentials']]) {
-
                 sh 'aws --version'
-
                 sh 'aws sts get-caller-identity'
-
                 sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 658860694489.dkr.ecr.us-east-1.amazonaws.com'
-
                 sh 'docker tag jenkins-ci-cd:${BUILD_NUMBER} 658860694489.dkr.ecr.us-east-1.amazonaws.com/jenkins-ci-cd:${BUILD_NUMBER}'
-
                 sh 'docker push 658860694489.dkr.ecr.us-east-1.amazonaws.com/jenkins-ci-cd:${BUILD_NUMBER}'
             }
         }
@@ -62,7 +52,4 @@ post {
     failure {
         echo 'CI/CD Pipeline failed. Check the console output.'
     }
-}
-```
-
 }
