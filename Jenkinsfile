@@ -28,7 +28,7 @@ pipeline {
                     variable: 'SONAR_TOKEN'
                 )]) {
                     sh '''
-                        mvn sonar:sonar \
+                        mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
                           -Dsonar.host.url=https://sonarcloud.io \
                           -Dsonar.token=$SONAR_TOKEN \
                           -Dsonar.projectKey=shubhamg599_Java-CI-CD \
