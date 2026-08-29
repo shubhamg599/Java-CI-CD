@@ -37,7 +37,7 @@ stages {
 
     stage('Push to ECR') {
         steps {
-            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-ecr-credentials']]) {
+            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
                 sh 'aws --version'
                 sh 'aws sts get-caller-identity'
                 sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 658860694489.dkr.ecr.us-east-1.amazonaws.com'
