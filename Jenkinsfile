@@ -7,6 +7,7 @@ stages {
         steps {
             checkout scm
         }
+    }
 
     stage('Build') {
         steps {
@@ -88,4 +89,3 @@ post {
         echo 'CI/CD Pipeline failed. Check the stage logs above for the exact error.'
     }
 }
-
